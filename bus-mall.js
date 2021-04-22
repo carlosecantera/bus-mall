@@ -56,19 +56,38 @@ const myChart = new Chart(ctx, {
 //                 'rgba(255, 159, 64, 0.2)'
 //             ],
 //             borderColor: [
-//                 'rgba(255, 99, 132, 1)',
-//                 'rgba(54, 162, 235, 1)',
-//                 'rgba(255, 206, 86, 1)',
-//                 'rgba(75, 192, 192, 1)',
-//                 'rgba(153, 102, 255, 1)',
-//                 'rgba(255, 159, 64, 1)'
-//             ],
+  //                 'rgba(255, 99, 132, 1)',
+  //                 'rgba(54, 162, 235, 1)',
+  //                 'rgba(255, 206, 86, 1)',
+  //                 'rgba(75, 192, 192, 1)',
+  //                 'rgba(153, 102, 255, 1)',
+  //                 'rgba(255, 159, 64, 1)'
+  //             ],
 
-const results = document.getElementById('products-click');
-const leftImageElem = document.getElementById('leftImage');
-const middleImageElem = document.getElementById('middleImage');
-const rightImageElem = document.getElementById('rightImage');
-const leftproductPElem = document.getElementById('left_product_p');
+  const productList = document.getElementById('productList');
+  const votesin = document.getElementById('votesin');
+  
+  function productVote(name){
+    this.name =name;
+  
+    Product.list.push(this);
+  }
+  
+  Product.list = [];
+  
+  
+  productList.addEventListener('vote', handleClick);
+  
+  function handleClick(event) {
+    event.preventDefault();
+    console.log(event.target);
+  }
+  
+  const results = document.getElementById('products-click');
+  const leftImageElem = document.getElementById('leftImage');
+  const middleImageElem = document.getElementById('middleImage');
+  const rightImageElem = document.getElementById('rightImage');
+  const leftproductPElem = document.getElementById('left_product_p');
 const middleproductPElem =document.getElementById('middle_product_p');
 const rightproductPElem = document.getElementById('right_product_p');
 
@@ -141,7 +160,7 @@ function handleClick(event) {
         if (id === 'middleImage') {
             middleImage.clicks++
           }
-        if (totalClicks === 25){
+          if (totalClicks === 25){
           allProducts.removeEventListener('click', handleClick);
 
         }  
@@ -149,6 +168,7 @@ function handleClick(event) {
       }
   }
 }
+
 
 new Productimages('bag','./images/bag.jpeg');
 new Productimages('banana','./images/banana.jpeg');
